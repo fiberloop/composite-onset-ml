@@ -80,16 +80,21 @@ thr = null.hotelling_threshold(1e-3, nu=K - 1)     # choose alpha, then the thre
 
 ## Getting started
 
+With Python 3.11 or later (tested on 3.12):
+
 ```bash
-micromamba create -n onsetml python=3.12 pip
-micromamba activate onsetml
+git clone https://github.com/fiberloop/composite-onset-ml.git
+cd composite-onset-ml
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"
 python -m pytest -q
 python scripts/first_look.py ARC-00_m45_s2
 ```
 
 `first_look.py` writes a few figures to `outputs/`: the load curve, the strain field at the
-peak, and the history of a few elements. Extras for the methods: `.[changepoint]` (ruptures),
+peak, and the history of a few elements. Open `notebooks/00_explore_the_data.ipynb` with the
+`.venv` interpreter as its kernel (VS Code and Jupyter both find it); it runs in about 15 s. Extras for the methods: `.[changepoint]` (ruptures),
 `.[cluster]` (umap-learn, tslearn), `.[deep]` (PyTorch, for the stretch goal).
 
 ## Layout
