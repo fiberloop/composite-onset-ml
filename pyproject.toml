@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onsetml"
+version = "0.1.0"
+description = "Where does a composite start to fail? Onset detection and clustering of nonlinear events in DIC strain fields (CS-433 project)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "pandas>=2.1",
+    "xarray>=2024.1",
+    "netCDF4>=1.6",
+    "matplotlib>=3.8",
+    "scikit-learn>=1.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5", "ipykernel", "nbconvert>=7"]
+changepoint = ["ruptures>=1.1"]
+cluster = ["umap-learn>=0.5", "tslearn>=0.6"]
+deep = ["torch>=2.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
